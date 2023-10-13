@@ -1,0 +1,5 @@
+yarn
+npx knex migrate:up
+yarn start
+
+docker image prune : delete all no use
