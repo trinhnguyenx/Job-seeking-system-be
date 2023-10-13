@@ -1,3 +1,5 @@
+3 bước này để migarate DB
+tạo 1 schema trên mysql tên trong .env giống local là được. rồi chạy 3 lệnh dưới
 yarn
 npx knex migrate:up
 yarn start
