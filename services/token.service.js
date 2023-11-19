@@ -37,12 +37,36 @@ function hashPasswordWithSalt(password, saltVal) {
 	return {
 		password :hashedPassword, salt :saltVal};
 }
-function signToken(user){
+function signToken(user) {
 	return jwt.sign({
 		id :user.id,
 		name: user.name,
 		email : user.email,
 		role: user.role
+	},process.env.SECRET, {
+		algorithm: "HS256",
+		expiresIn: "1d",
+	})
+}
+function refreshToken(data) {
+	return jwt.sign({
+		id :data.id,
+		name: data.name,
+		email : data.email,
+		role: data.role
+	},process.env.SECRET_REFRESH, {
+		algorithm: "HS256",
+		expiresIn: "365d",
+	})
+}
+function refreshTokenService(token) {
+	const decoded = jwt.verify(token, process.env.SECRET_REFRESH);
+	console.log("check", decoded.name)
+	return jwt.sign({
+		id :decoded.id,
+		name: decoded.name,
+		email : decoded.email,
+		role: decoded.role
 	},process.env.SECRET, {
 		algorithm: "HS256",
 		expiresIn: "1d",
@@ -78,6 +102,8 @@ function authorize(req,res,next){
 }
 module.exports = {
 	signToken,
+	refreshToken,
+	refreshTokenService,
 	authorize,
 	getInfoFromToken,
 	hashPasswordWithSalt

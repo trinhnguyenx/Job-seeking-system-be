@@ -9,6 +9,9 @@ router.post('/login',AuthController.login)
 router.post('/register',AuthController.register)
 router.put('/:id',AuthController.updateUserInfo)
 router.delete('/:id',AuthController.deleteUser)
+router.post('/forgot-password',AuthController.forgotPassword)
+router.get('/refresh',AuthController.refreshToken)
+
 
 
 module.exports = router;
