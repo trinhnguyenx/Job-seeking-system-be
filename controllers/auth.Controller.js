@@ -142,5 +142,5 @@ module.exports = {
 	updateUserInfo,
 	deleteUser,
 	forgotPassword,
-	refreshToken
+	refreshToken,
 }

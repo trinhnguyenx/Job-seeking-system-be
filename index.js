@@ -8,10 +8,12 @@ const app = express();
 const knexConfig = require('./knexfile');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const appRouter = require('./routes/datacrawl');
 
 app.use(cors({ origin: '*' }));
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/app', appRouter);
 
 
 const environment = 'development';

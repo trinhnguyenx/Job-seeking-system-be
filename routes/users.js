@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 		res.status(500).json({ error: 'Internal server error1' });
 	}
 });
-router.get('/me', [AuthMiddleware.authorize], async (req, res) => {
+router.get('/me', async (req, res) => {
 	try {
 		console.log(req.headers);
 		const user_id = TokenService.getInfoFromToken(req).id;
@@ -95,19 +95,4 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
-router.get('/:id/polls', async (req, res) => {
-	const userId = req.params.id;
-	try {
-		const user = await userController.getUserById(userId);
-		if (!user) {
-			res.status(404).json({ error: 'User not found' });
-			return;
-		}
-		const polls = await userController.getUserPolls(userId);
-		res.json(polls);
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ error: 'Internal server error' });
-	}
-});
 module.exports = router;

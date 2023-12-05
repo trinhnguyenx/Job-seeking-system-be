@@ -77,7 +77,7 @@ function getInfoFromToken(req){
 		const token = req.headers.authorization.split(' ').length == 2 ? req.headers.authorization.split(' ')[1] : req.headers.authorization;
 		const decode = jwt.verify(token, process.env.SECRET)
 		return decode
-	}	catch(e){
+	}	catch(e){	
 		return false
 	}
 }
