@@ -19,6 +19,7 @@ exports.up = function(knex) {
 	.createTable('job_detail', function (table) {
 		table.increments('id').primary();
 		table.string('Title');
+		table.string('Image');
 		table.string('Company');
 		table.string('Posting_date');
 		table.string('Deadline');
@@ -35,10 +36,12 @@ exports.up = function(knex) {
 		table.string('Location');
 		table.string('Note');
 		table.string('Phone_number');
+		table.string('Email');
 		table.string('Language');
 		table.string('Describe_job');
 		table.string('Benefits');
 		table.string('Skills');
+
 	  });
 };
 
