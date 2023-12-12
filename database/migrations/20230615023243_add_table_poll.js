@@ -20,7 +20,7 @@ exports.up = function(knex) {
 		table.increments('id').primary();
 		table.string('Title');
 		table.string('Company');
-		table.string('Posting Date');
+		table.string('Posting_date');
 		table.string('Deadline');
 		table.string('Salary');
 		table.string('YOE');
