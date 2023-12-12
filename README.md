@@ -1,3 +1,21 @@
-cd BE-S
+# crawl-fe
+# cd BE-S
+# migrate db in note.readme
+
+## Project Setup
+
+```sh
 npm install
-# note in note.readme to migarate db
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm start
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
