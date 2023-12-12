@@ -18,31 +18,30 @@ exports.up = function(knex) {
 	})
 	.createTable('job_detail', function (table) {
 		table.increments('id').primary();
-		table.string('Title');
-		table.string('Image');
-		table.string('Company');
-		table.string('Posting_date');
-		table.string('Deadline');
-		table.string('Salary');
-		table.string('YOE');
-		table.string('Type');
-		table.string('Level');
-		table.string('Education');
-		table.string('Sex');
-		table.string('Career');
-		table.string('Age');
-		table.string('ID_Job');
-		table.string('Contact_with');
-		table.string('Location');
-		table.string('Note');
-		table.string('Phone_number');
-		table.string('Email');
-		table.string('Language');
-		table.string('Describe_job');
-		table.string('Benefits');
-		table.string('Skills');
-
-	  });
+		table.mediumtext('Title');
+		table.mediumtext('Image');
+		table.mediumtext('Company');
+		table.mediumtext('Posting_date');
+		table.mediumtext('Deadline');
+		table.mediumtext('Salary');
+		table.mediumtext('YOE');
+		table.mediumtext('Type');
+		table.mediumtext('Level');
+		table.mediumtext('Education');
+		table.mediumtext('Sex');
+		table.mediumtext('Career');
+		table.mediumtext('Age');
+		table.mediumtext('ID_Job');
+		table.mediumtext('Contact_with');
+		table.mediumtext('Location');
+		table.mediumtext('Note');
+		table.mediumtext('Phone_number');
+		table.mediumtext('Email');
+		table.mediumtext('Language');
+		table.mediumtext('Describe_job');
+		table.mediumtext('Benefits');
+		table.mediumtext('Skills')
+	});
 };
 
 /**
