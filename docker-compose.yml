@@ -1,0 +1,68 @@
+version: "3"
+
+services:
+  app_server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
+    container_name: app-api
+    ports:
+      - "3009:3009"
+    volumes:
+      - ./:/var/www
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+    environment:
+      - DB_HOST=mysql
+      - REDIS_HOST=redis
+      - DB_PASSWORD=password
+      - DB_NAME=sample_db
+      - DB_USERNAME=root
+    networks:
+      - example-network
+  mysql:
+    image: mysql:8.0
+    container_name: app-sql
+    restart: "always"
+    environment:
+      MYSQL_ROOT_PASSWORD: Trinh1406@
+      MYSQL_DATABASE: database_user
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Trinh1406@
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    ports:
+      - 3307:3306
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    networks:
+      - example-network
+
+  redis:
+    image: "redis:6.0.5-alpine"
+    container_name: app-redis
+    command: redis-server
+    ports:
+      - 6379:6379
+    restart: "always"
+    volumes:
+      - ./docker/redis/data:/var/lib/redis
+    networks:
+      - example-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+networks:
+  example-network:
+  #docker-compose build
+  #docker-compose up
