@@ -39,7 +39,7 @@ services:
       timeout: 20s
       retries: 10
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
     networks:
