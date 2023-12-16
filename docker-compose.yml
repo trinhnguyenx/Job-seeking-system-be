@@ -26,7 +26,7 @@ services:
     networks:
       - example-network
   mysql:
-    image: mysql:8.0
+    image: congtrinhz/mysql:8.0
     container_name: app-sql
     restart: "always"
     environment:
@@ -46,7 +46,7 @@ services:
       - example-network
 
   redis:
-    image: "redis:6.0.5-alpine"
+    image: contrinhz/redis:6.0.5-alpine
     container_name: app-redis
     command: redis-server
     ports:
