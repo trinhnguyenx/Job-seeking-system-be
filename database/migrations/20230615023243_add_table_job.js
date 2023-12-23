@@ -16,31 +16,21 @@ exports.up = function(knex) {
 		table.timestamp('created_at').defaultTo(knex.fn.now());
 		table.timestamp('updated_at').defaultTo(knex.fn.now());
 	})
-	.createTable('job_detail', function (table) {
+	.createTable('job_data', function (table) {
 		table.increments('id').primary();
-		table.mediumtext('Title');
-		table.mediumtext('Image');
-		table.mediumtext('Company');
-		table.mediumtext('Posting_date');
-		table.mediumtext('Deadline');
-		table.mediumtext('Salary');
-		table.mediumtext('YOE');
-		table.mediumtext('Type');
-		table.mediumtext('Level');
-		table.mediumtext('Education');
-		table.mediumtext('Sex');
-		table.mediumtext('Career');
-		table.mediumtext('Age');
-		table.mediumtext('ID_Job');
-		table.mediumtext('Contact_with');
-		table.mediumtext('Location');
-		table.mediumtext('Note');
-		table.mediumtext('Phone_number');
-		table.mediumtext('Email');
-		table.mediumtext('Language');
-		table.mediumtext('Describe_job');
-		table.mediumtext('Benefits');
-		table.mediumtext('Skills')
+		table.string('Title');
+		table.string('Company_Name');
+		table.string('Job');
+		table.string('Place');
+		table.string('Number_Employee');
+		table.string('Experience');
+		table.string('Level');
+		table.string('Salary');
+		table.string('Education');
+		table.string('Description');
+		table.string('Requirement');
+		table.string('Deadline');
+		table.string('Source_Picture');	
 	});
 };
 
@@ -50,6 +40,6 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
 	return knex.schema
-	.dropTable('users').dropTable('job_detail')
+	.dropTable('users').dropTable('job_data')
 	
 };

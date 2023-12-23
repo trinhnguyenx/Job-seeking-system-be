@@ -5,34 +5,28 @@ const environment = process.env.NODE_ENV || "development";
 const db = knex(config[environment]);
 
 const getDataCrawl = async () => {
-  return await db("job_detail").select(
-    "job_detail.id",
-    "job_detail.Title",
-    "job_detail.Image",
-    "job_detail.Company",
-    "job_detail.Posting_date",
-    "job_detail.Deadline",
-    "job_detail.Salary",
-    "job_detail.YOE",
-    "job_detail.Type",
-    "job_detail.Level",
-    "job_detail.Education",
-    "job_detail.Sex",
-    "job_detail.Career",
-    "job_detail.Age",
-    "job_detail.ID_Job",
-    "job_detail.Contact_with",
-    "job_detail.Location",
-    "job_detail.Note",
-    "job_detail.Phone_number",
-    "job_detail.Email",
-    "job_detail.Language",
-    "job_detail.Describe_job",
-    "job_detail.Benefits",
-    "job_detail.Skills",
-    "job_detail.Link",
+  return await db("job_data").select(
+    "job_data.id",
+    "job_data.Title",
+    "job_data.Company_Name",
+    "job_data.Job",
+    "job_data.Place",
+    "job_data.Number_Employee",
+    "job_data.Experience",
+    "job_data.Level",
+    "job_data.Salary",
+    "job_data.Education",
+    "job_data.Description",
+    "job_data.Requirement",
+    "job_data.Deadline",
+    "job_data.Source_Picture"
+
   );
+};
+const getDataCrawlById = async (id) => {
+  return await db("job_data").where({ id }).first();
 };
 module.exports = {
   getDataCrawl,
+  getDataCrawlById
 };
