@@ -8,9 +8,9 @@ const authorize = (req, res, next) => {
 		try {
 			const token = req.headers.authorization.split(' ').length == 2 ? req.headers.authorization.split(' ')[1] : req.headers.authorization;
 			const decoded = jwt.verify(token, process.env.SECRET);
-			console.log(token)
-
+			console.log("checktoken:",token,"checkSecretKey:",process.env.SECRET)
 			const userRole = decoded.role;
+			console.log(userRole);
 			acl.areAnyRolesAllowed(userRole, req.route.path, req.method.toLowerCase(), (err, result) => {
 				if (err) {
 					console.log(err);

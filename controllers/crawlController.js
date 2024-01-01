@@ -9,8 +9,15 @@ const getDataCrawl = async () => {
     "job_data.id",
     "job_data.Title",
     "job_data.Company_Name",
+    "job_data.Time",
+    "job_data.City",
+    "job_data.Age",
+    "job_data.Sexual",
+    "job_data.Probation_Time",
+    "job_data.Work_Way",
     "job_data.Job",
     "job_data.Place",
+    "job_data.Right",
     "job_data.Number_Employee",
     "job_data.Experience",
     "job_data.Level",
@@ -26,7 +33,12 @@ const getDataCrawl = async () => {
 const getDataCrawlById = async (id) => {
   return await db("job_data").where({ id }).first();
 };
+const updateJob = (id, updatedJob) => {
+  return db("job_data").where({ id }).update(updatedJob);
+};
+
 module.exports = {
   getDataCrawl,
-  getDataCrawlById
+  getDataCrawlById,
+  updateJob,
 };

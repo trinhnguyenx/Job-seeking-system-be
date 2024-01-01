@@ -93,17 +93,18 @@ const deleteUser = async (req, res) => {
 		res.status(500).json({ message: error.message || 'Internal server error'});
 	}
 }
-const forgotPassword = async (req, res) => {
-	const { mailTo } = req.body;
+const sendMail = async (req, res) => {
+	const sendEmail = req.body;
 
 	try {
-		// Gửi email
 		const mailOptions = {
 			emailFrom: "nguyencongtrinhqb@gmail.com",
-			emailTo: mailTo,
-			subject: "Password reset requested",
-			// text: `Hi ${user.name}, You requested for a password reset. Here's your token: ${token}`,
-			text: "Hello",
+
+
+			emailTo: sendEmail.mailTo,
+			subject: "Here is your job link",
+			text: `Click here:${sendEmail.link}`
+			
 		};
 		try {
 			await mailService.sendEmail(mailOptions);
@@ -141,6 +142,6 @@ module.exports = {
 	register,
 	updateUserInfo,
 	deleteUser,
-	forgotPassword,
+	sendMail,
 	refreshToken,
 }

@@ -1,32 +1,5 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-//render js object user
-// const SECRECT = "secret"
-// const user = {
-// 	name: "John",
-// 	age: 30,
-// 	email: "example@gmail.com",
-// 	phone: "0123456789"
-
-// }
-
-//create token
-//make payload
-// const payload = {
-// 	name: user.name,
-// 	age: user.age,
-// 	email: user.email,
-// 	phone: user.phone
-// }
-// const token = jwt.sign(payload,SECRECT,{
-// 	algorithm: "HS256",
-// 	expiresIn: '1d',
-// 	issuer: "example.com",
-// })
-//checktoken valid
-// const decoded = jwt.verify(token,SECRECT)
-// console.log(decoded)
-// console.log(token)
 const crypto = require('crypto');
 function hashPasswordWithSalt(password, saltVal) {
 	if(!saltVal){

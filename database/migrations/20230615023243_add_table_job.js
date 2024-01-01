@@ -19,6 +19,13 @@ exports.up = function(knex) {
 	.createTable('job_data', function (table) {
 		table.increments('id').primary();
 		table.string('Title');
+		table.string('Time');
+		table.string('City');
+		table.string('Age');
+		table.string('Sexual');
+		table.string('Probation_Time');
+		table.string('Work_Way');
+		table.string('Right');
 		table.string('Company_Name');
 		table.string('Job');
 		table.string('Place');

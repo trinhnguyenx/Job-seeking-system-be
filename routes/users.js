@@ -15,9 +15,8 @@ router.get('/', async (req, res) => {
 		res.status(500).json({ error: 'Internal server error1' });
 	}
 });
-router.get('/me', async (req, res) => {
+router.get('/me',[AuthMiddleware.authorize], async (req, res) => {
 	try {
-		console.log(req.headers);
 		const user_id = TokenService.getInfoFromToken(req).id;
 		console.log(user_id);
 		const user = await userController.getUserById(user_id);
@@ -62,7 +61,7 @@ router.post('/', async (req, res) => {
 });
 
 // Cập nhật thông tin người dùng
-router.put('/me', [AuthMiddleware.authorize], async (req, res) => {
+router.put('/me', async (req, res) => {
 	const updatedUser = req.body;
 	try {
 		const user_id = TokenService.getInfoFromToken(req).id;
@@ -81,7 +80,9 @@ router.put('/me', [AuthMiddleware.authorize], async (req, res) => {
 		console.error(err);
 		res.status(500).json({ error: 'Internal server error' });
 	}
-});
+})
+
+//  [AuthMiddleware.authorize],
 
 // Xóa người dùng
 router.delete('/:id', async (req, res) => {
