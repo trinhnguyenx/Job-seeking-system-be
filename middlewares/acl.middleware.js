@@ -8,7 +8,9 @@ aclInstance.allow([
 		allows: [
 			{ resources: '/users', permissions: '*' },
 			{ resources: '/users/:id', permissions: '*' },
-			{ resources: '/me', permissions: '*'}
+			{ resources: '/me', permissions: '*'},
+			{ resources: '/', permissions: '*' },
+
 		],
 	},
 	{
@@ -16,7 +18,7 @@ aclInstance.allow([
 		allows: [
 			{ resources: '/me', permissions: ['get', 'post', 'put'] },
 			{ resources: '/', permissions: ['get', 'post'] },
-			{ resources: '/users/:id', permissions: ['get', 'put', 'delete'] },
+			{ resources: '/users/:id', permissions: ['get', 'put'] },
 		],
 	}
 ]);

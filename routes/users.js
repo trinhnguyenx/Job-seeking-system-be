@@ -82,10 +82,8 @@ router.put('/me', async (req, res) => {
 	}
 })
 
-//  [AuthMiddleware.authorize],
-
 // Xóa người dùng
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',[AuthMiddleware.authorize], async (req, res) => {
 	const userId = req.params.id;
 	try {
 		await userController.deleteUser(userId);
