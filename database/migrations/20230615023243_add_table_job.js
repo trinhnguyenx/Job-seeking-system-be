@@ -13,32 +13,34 @@ exports.up = function(knex) {
 		table.string('role');
 		table.string('avatar');
 		table.string('age');
+		table.string('isVerified');
 		table.timestamp('created_at').defaultTo(knex.fn.now());
 		table.timestamp('updated_at').defaultTo(knex.fn.now());
 	})
 	.createTable('job_data', function (table) {
 		table.increments('id').primary();
-		table.string('Title');
-		table.string('Time');
-		table.string('City');
-		table.string('Age');
-		table.string('Sexual');
-		table.string('Probation_Time');
-		table.string('Work_Way');
-		table.string('Right');
-		table.string('Company_Name');
-		table.string('Job');
-		table.string('Place');
-		table.string('Number_Employee');
-		table.string('Experience');
-		table.string('Level');
-		table.string('Salary');
-		table.string('Education');
-		table.string('Description');
-		table.string('Requirement');
-		table.string('Deadline');
-		table.string('Source_Picture');	
+		table.specificType('Title', 'MEDIUMTEXT');
+		table.specificType('Time', 'MEDIUMTEXT');
+		table.specificType('City', 'MEDIUMTEXT');
+		table.specificType('Age', 'MEDIUMTEXT');
+		table.specificType('Sexual', 'MEDIUMTEXT');
+		table.specificType('Probation_Time', 'MEDIUMTEXT');
+		table.specificType('Work_Way', 'MEDIUMTEXT');
+		table.specificType('Right', 'MEDIUMTEXT');
+		table.specificType('Company_Name', 'MEDIUMTEXT');
+		table.specificType('Job', 'MEDIUMTEXT');
+		table.specificType('Place', 'MEDIUMTEXT');
+		table.specificType('Number_Employee', 'MEDIUMTEXT');
+		table.specificType('Experience', 'MEDIUMTEXT');
+		table.specificType('Level', 'MEDIUMTEXT');
+		table.specificType('Salary', 'MEDIUMTEXT');
+		table.specificType('Education', 'MEDIUMTEXT');
+		table.specificType('Description', 'MEDIUMTEXT');
+		table.specificType('Requirement', 'MEDIUMTEXT');
+		table.specificType('Deadline', 'MEDIUMTEXT');
+		table.specificType('Source_Picture', 'MEDIUMTEXT');	
 	});
+
 };
 
 /**

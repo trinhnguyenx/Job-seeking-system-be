@@ -35,6 +35,36 @@ const login = async (req, res) => {
 		res.status(500).json({ message: e.message || 'Internal server error'});
 	}
 };
+const resetPassword = async (req, res) => { 
+	try {
+		const { email, password } = req.body;
+		const user = await AuthServices.resetPassword(email, password);
+		if (!user) {
+			res.status(400).json({ message: 'Email not found'});
+			return;
+		}
+		res.status(200).json({ message: 'Reset password success'});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: error.message || 'Internal server error'});
+	}
+
+}
+const forgotpassWord = async (req, res) => {
+	try {
+		const { email } = req.body;
+		const user = await AuthServices.forgotpassWord(email);
+		if (!user) {
+			res.status(400).json({ message: 'Email not found'});
+			return;
+		}
+		res.status(200).json({ message: 'Please check your email to reset password'});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: error.message || 'Internal server error'});
+	}
+
+}
 
 const register = async ( req, res) => {
 	try {
@@ -99,8 +129,6 @@ const sendMail = async (req, res) => {
 	try {
 		const mailOptions = {
 			emailFrom: "nguyencongtrinhqb@gmail.com",
-
-
 			emailTo: sendEmail.mailTo,
 			subject: "Here is your job link",
 			text: `Click here:${sendEmail.link}`
@@ -144,4 +172,6 @@ module.exports = {
 	deleteUser,
 	sendMail,
 	refreshToken,
+	forgotpassWord,
+	resetPassword
 }

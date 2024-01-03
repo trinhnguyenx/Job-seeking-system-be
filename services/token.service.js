@@ -21,6 +21,14 @@ function signToken(user) {
 		expiresIn: "1d",
 	})
 }
+function forgotpasswordToken(data) {
+	return jwt.sign({
+		email : data.email,
+		exp: Math.floor(Date.now() / 1000) + (60 * 60)
+	},process.env.SECRET, {
+		algorithm: "HS256",
+	})
+}
 function refreshToken(data) {
 	return jwt.sign({
 		id :data.id,
@@ -79,5 +87,7 @@ module.exports = {
 	refreshTokenService,
 	authorize,
 	getInfoFromToken,
-	hashPasswordWithSalt
+	hashPasswordWithSalt,
+	forgotpasswordToken
+
 }
