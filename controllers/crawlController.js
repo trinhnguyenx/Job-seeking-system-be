@@ -6,7 +6,7 @@ const db = knex(config[environment]);
 
 const getDataCrawl = async () => {
   return await db("job_data").select(
-    "job_data.Id",
+    "job_data.id",
     "job_data.Title",
     "job_data.Company_Name",
     "job_data.Time",
@@ -55,13 +55,13 @@ const filterJob = async (key1, key2, key3) => {
   }
   console.log(cityKeyword);
   return await db("job_data").whereRaw(
-    "LOWER(Title) like ?  AND LOWER(job) like ? AND (LOWER(City) like ? OR LOWER(City) like ? OR LOWER(City) like ?)",
+    "LOWER(Title) like ?  AND LOWER(job) like ? AND (LOWER(City) like ? )",
     [
       `%${key1}%`,
       `%${key2}%`,
       `%${cityKeyword}%`,
-      `%tphcm%`,
-      `%hcm%`,
+      // `%tphcm%`,
+      // `%hcm%`,
     ]
   );
 };
